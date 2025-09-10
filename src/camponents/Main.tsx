@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { askOllama } from '../services/askOllama'
 import Input from './Input'
 import MessageContainer from './MessageContainer';
+import Header from './Header';
 
 interface Message {
     id: string;
@@ -76,6 +77,7 @@ export default function Main() {
 
     return (
         <div>
+            <Header model={selectedModel} />
             <MessageContainer id={user} content={text} role={'user'} timestamp={user} messages={messages} loading={isLoading} selectedModel={selectedModel} />
             <Input
                 inputRef={inputRef}

@@ -1,7 +1,11 @@
 import { Bot, Settings, Trash2 } from 'lucide-react'
 import React, { useState } from 'react'
 
-export default function Header() {
+type HeaderProps = {
+    model: string | null
+}
+
+export default function Header({ model }: HeaderProps) {
 
     const [showSettings, setShowSettings] = useState<boolean>(false);
 
@@ -20,7 +24,7 @@ export default function Header() {
                                 Alpaca Chat
                             </h1>
                             <p className="text-sm text-gray-500 dark:text-gray-400">
-                                Modello: {null}
+                                Model: {model}
                             </p>
                         </div>
                     </div>
