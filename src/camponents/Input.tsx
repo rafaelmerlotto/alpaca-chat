@@ -9,11 +9,10 @@ type InputProps = {
     isLoading: boolean
     handleSendMessage: () => void
     value: string
-    onChange: (value: string) => void // Add this
+    onChange: (value: string) => void
 }
 
 export default function Input({ inputRef, handleKeyPress, isLoading, handleSendMessage, value, onChange }: InputProps) {
-    // Remove the local state and use the value from props
     return (
         <div className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4">
             <div className="flex items-end space-x-3">

@@ -38,11 +38,11 @@ export default function Main() {
 
             const assistantMessage: Message = {
                 id: (Date.now() + 1).toString(),
-                content: response, // Use the actual response from Ollama
+                content: response,
                 role: 'assistant',
                 timestamp: new Date(),
             };
-
+            setText(response)
             setMessages(prev => [...prev, assistantMessage]);
         } catch (error) {
             console.error('Error sending message:', error);
@@ -65,7 +65,7 @@ export default function Main() {
         }
     };
 
-    // Add this function to update inputValue
+    // function to update inputValue
     const handleInputChange = (value: string) => {
         setInputValue(value);
     };
