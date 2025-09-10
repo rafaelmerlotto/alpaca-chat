@@ -3,12 +3,19 @@ import { askOllama } from '../services/askOllama'
 import Input from './Input'
 import MessageContainer from './MessageContainer';
 import Header from './Header';
+import type { JSX } from 'react/jsx-runtime';
 
 interface Message {
     id: string;
     content: string;
     role: 'user' | 'assistant';
     timestamp: Date;
+}
+
+export interface OllamaModel {
+    map(arg0: (model: OllamaModel) => JSX.Element): React.ReactNode;
+    name: string;
+    size: string;
 }
 
 export default function Main() {
@@ -75,9 +82,17 @@ export default function Main() {
         setInputValue(value);
     };
 
+    const availableModels: OllamaModel[] | any = [
+        { name: 'llama2', size: '7B' },
+        { name: 'codellama', size: '7B' },
+        { name: 'mistral', size: '7B' },
+        { name: 'neural-chat', size: '7B' },
+    ];
+
+
     return (
         <div>
-            <Header model={selectedModel} />
+            <Header model={selectedModel} availableModels={availableModels} />
             <MessageContainer id={user} content={text} role={'user'} timestamp={user} messages={messages} loading={isLoading} selectedModel={selectedModel} />
             <Input
                 inputRef={inputRef}

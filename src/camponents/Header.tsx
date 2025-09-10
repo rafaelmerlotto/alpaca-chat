@@ -1,11 +1,13 @@
 import { Bot, Settings, Trash2 } from 'lucide-react'
 import React, { useState } from 'react'
+import type { OllamaModel } from './Main'
 
 type HeaderProps = {
     model: string | null
+    availableModels: OllamaModel[]
 }
 
-export default function Header({ model }: HeaderProps) {
+export default function Header({ model, availableModels }: HeaderProps) {
 
     const [showSettings, setShowSettings] = useState<boolean>(false);
 
@@ -58,11 +60,11 @@ export default function Header({ model }: HeaderProps) {
                                 onChange={() => null}
                                 className="px-3 py-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md text-sm text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             >
-                                {/* {availableModels.map((model) => (
+                                {availableModels.map((model: OllamaModel) => (
                                     <option key={model.name} value={model.name}>
                                         {model.name} ({model.size})
                                     </option>
-                                ))} */}
+                                ))}
                             </select>
                         </div>
                     </div>
