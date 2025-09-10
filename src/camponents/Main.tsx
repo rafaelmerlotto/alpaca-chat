@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { askOllama } from '../services/askOllama'
 import Input from './Input'
+import MessageContainer from './MessageContainer';
 
 interface Message {
     id: string;
@@ -14,10 +15,11 @@ export default function Main() {
     const [inputValue, setInputValue] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const inputRef = useRef<HTMLInputElement>(null);
-    const [messages, setMessages] = useState<Message[]>([]);
+    const [messages, setMessages] = useState<Message[] | any>([]);
     const [showSettings, setShowSettings] = useState<boolean>(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const [selectedModel, setSelectedModel] = useState<string>('llama2');
+    const [user, setUser] = useState<any>()
 
     const handleSendMessage = async () => {
         if (!inputValue.trim() || isLoading) return;
@@ -42,8 +44,10 @@ export default function Main() {
                 role: 'assistant',
                 timestamp: new Date(),
             };
+
+            setUser(assistantMessage)
             setText(response)
-            setMessages(prev => [...prev, assistantMessage]);
+            setMessages((prev: any) => [...prev, assistantMessage]);
         } catch (error) {
             console.error('Error sending message:', error);
             const errorMessage: Message = {
@@ -52,7 +56,7 @@ export default function Main() {
                 role: 'assistant',
                 timestamp: new Date(),
             };
-            setMessages(prev => [...prev, errorMessage]);
+            setMessages((prev: any) => [...prev, errorMessage]);
         } finally {
             setIsLoading(false);
         }
@@ -72,8 +76,7 @@ export default function Main() {
 
     return (
         <div>
-            <p className="text-white">{text}</p>
-
+            <MessageContainer id={user} content={text} role={'user'} timestamp={user} messages={messages} />
             <Input
                 inputRef={inputRef}
                 handleKeyPress={handleKeyPress}
