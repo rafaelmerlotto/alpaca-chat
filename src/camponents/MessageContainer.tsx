@@ -1,5 +1,5 @@
-import { Bot, User } from 'lucide-react';
-import React, { type Key, type ReactNode } from 'react'
+import { Bot, Loader2, User } from 'lucide-react';
+import React, { useRef, type Key, type ReactNode } from 'react'
 
 type MessageContainerProps = {
     id: Key | null | undefined;
@@ -7,9 +7,13 @@ type MessageContainerProps = {
     content: ReactNode;
     role: string;
     messages: []
+    loading: boolean
+    selectedModel: string
 }
 
-export default function MessageContainer({ messages }: MessageContainerProps) {
+export default function MessageContainer({ messages, loading, selectedModel }: MessageContainerProps) {
+
+    const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const formatTime = (date: Date) => {
         return date.toLocaleTimeString('it-IT', {
@@ -17,6 +21,8 @@ export default function MessageContainer({ messages }: MessageContainerProps) {
             minute: '2-digit',
         });
     };
+
+
 
     return (
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -77,6 +83,26 @@ export default function MessageContainer({ messages }: MessageContainerProps) {
                     </div>
                 ))
             )}
+
+            {loading && (
+                <div className="flex justify-start">
+                    <div className="flex items-end space-x-3 max-w-[80%]">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center flex-shrink-0">
+                            <Bot className="w-4 h-4 text-white" />
+                        </div>
+                        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl rounded-bl-md px-4 py-3">
+                            <div className="flex items-center space-x-2">
+                                <Loader2 className="w-4 h-4 animate-spin text-gray-400" />
+                                <span className="text-sm text-gray-500 dark:text-gray-400">
+                                    {selectedModel} sta pensando...
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            <div ref={messagesEndRef} />
         </div>
 
     )

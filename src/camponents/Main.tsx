@@ -76,7 +76,7 @@ export default function Main() {
 
     return (
         <div>
-            <MessageContainer id={user} content={text} role={'user'} timestamp={user} messages={messages} />
+            <MessageContainer id={user} content={text} role={'user'} timestamp={user} messages={messages} loading={isLoading} selectedModel={selectedModel} />
             <Input
                 inputRef={inputRef}
                 handleKeyPress={handleKeyPress}
