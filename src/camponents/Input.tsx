@@ -63,6 +63,14 @@ export default function Input() {
         }
     };
 
+    const handleKeyPress = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSendMessage();
+        }
+    };
+
+
 
 
     return (
@@ -74,6 +82,7 @@ export default function Input() {
                         type="text"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
+                        onKeyPress={handleKeyPress}
                         placeholder="Enter your message..."
                         disabled={isLoading}
                         className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none disabled:opacity-50"
