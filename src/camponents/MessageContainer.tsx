@@ -32,11 +32,11 @@ export default function MessageContainer({ messages, loading, selectedModel }: M
                         <Bot className="w-8 h-8 text-white" />
                     </div>
                     <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                        Benvenuto in Ollama Chat
+                        Welcome to Alpaca Chat
                     </h2>
                     <p className="text-gray-500 dark:text-gray-400 max-w-md">
-                        Inizia una conversazione con il tuo modello AI locale.
-                        Digita il tuo messaggio qui sotto per iniziare.
+                        Start a conversation with your local AI model.
+                        Type your message below to get started.
                     </p>
                 </div>
             ) : (
@@ -94,7 +94,7 @@ export default function MessageContainer({ messages, loading, selectedModel }: M
                             <div className="flex items-center space-x-2">
                                 <Loader2 className="w-4 h-4 animate-spin text-gray-400" />
                                 <span className="text-sm text-gray-500 dark:text-gray-400">
-                                    {selectedModel} sta pensando...
+                                    {selectedModel} is thinking...
                                 </span>
                             </div>
                         </div>

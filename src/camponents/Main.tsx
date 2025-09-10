@@ -90,8 +90,17 @@ export default function Main() {
     ];
 
 
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
+
     return (
-        <div>
+        <React.Fragment>
             <Header model={selectedModel} availableModels={availableModels} />
             <MessageContainer id={user} content={text} role={'user'} timestamp={user} messages={messages} loading={isLoading} selectedModel={selectedModel} />
             <Input
@@ -102,6 +111,6 @@ export default function Main() {
                 value={inputValue}
                 onChange={handleInputChange}
             />
-        </div>
+        </React.Fragment>
     )
 }
