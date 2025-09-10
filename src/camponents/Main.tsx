@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { askOllama } from '../services/askOllama'
+import Input from './Input'
 
 export default function Main() {
     const [text, setText] = useState<string>("")
@@ -19,6 +20,7 @@ export default function Main() {
         <div>
             <button onClick={handleSubmit}>ASK</button>
             <p className="text-white">{text}</p>
+            <Input />
         </div>
     )
 }
