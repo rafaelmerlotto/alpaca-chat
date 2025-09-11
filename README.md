@@ -45,6 +45,7 @@ It is created **only for local development** to help developers experiment and i
    ```bash
    npm run dev
 
+*Open your browser at [http://localhost:5173](http://localhost:5173)*
 
 ## Author
 
