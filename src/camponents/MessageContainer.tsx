@@ -22,7 +22,7 @@ export default function MessageContainer({ messages, loading, selectedModel }: M
         });
     };
 
-
+    console.log(messages)
 
     return (
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -67,9 +67,17 @@ export default function MessageContainer({ messages, loading, selectedModel }: M
                                     : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-bl-md'
                                     }`}
                             >
-                                <p className="text-sm leading-relaxed whitespace-pre-wrap">
-                                    {message.content}
-                                </p>
+                                {typeof message.content === "string" ? (
+                                    <p
+                                        className="text-sm leading-relaxed whitespace-pre-wrap"
+                                        dangerouslySetInnerHTML={{ __html: message.content }}
+                                    />
+                                ) : (
+                                    <p className="text-sm leading-relaxed whitespace-pre-wrap">
+                                        {message.content}
+                                    </p>
+                                )}
+
                                 <p
                                     className={`text-xs mt-1 ${message.role === 'user'
                                         ? 'text-blue-100'

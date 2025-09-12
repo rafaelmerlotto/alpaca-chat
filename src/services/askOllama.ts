@@ -14,6 +14,6 @@ export const askOllama = async (prompt: string) => {
         return data.response;
     } catch (err) {
         console.error(err);
-        return "Errore nel contattare Ollama.";
+        return `⚠️ Cannot reach Ollama.<br/>Clone the project: <a style="font-weight:bold;" href="https://github.com/rafaelmerlotto/alpaca-chat" target="_blank">GitHub Repository</a><br/>Make sure Ollama is installed and running locally.`;
     }
 }
