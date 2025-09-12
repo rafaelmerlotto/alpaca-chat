@@ -47,6 +47,12 @@ It is created **only for local development** to help developers experiment and i
 
 *Open your browser at [http://localhost:5173](http://localhost:5173)*
 
+## Dowload Ollama in locally
+
+[Download](https://ollama.com/download)
+
+---
+
 ## Author
 
 * Rafael Merlotto
