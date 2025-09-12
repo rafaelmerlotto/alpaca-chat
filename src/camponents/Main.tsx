@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { askOllama } from '../services/askOllama'
 import Input from './Input'
 import MessageContainer from './MessageContainer';
-import Header from './Header';
+import Header from './Header/Header';
 import type { JSX } from 'react/jsx-runtime';
 
 interface Message {

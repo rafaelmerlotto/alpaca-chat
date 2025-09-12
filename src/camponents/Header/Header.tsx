@@ -1,6 +1,6 @@
 import { Bot, Settings, Trash2 } from 'lucide-react'
 import React, { useState } from 'react'
-import type { OllamaModel } from './Main'
+import type { OllamaModel } from '../Main'
 
 type HeaderProps = {
     model: string | null

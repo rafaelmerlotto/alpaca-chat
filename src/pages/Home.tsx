@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../camponents/Header'
+import Header from '../camponents/Header/Header'
 import Main from '../camponents/Main'
 
 export default function Home() {
