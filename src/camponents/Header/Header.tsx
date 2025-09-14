@@ -10,6 +10,8 @@ type HeaderProps = {
 export default function Header({ model, availableModels }: HeaderProps) {
 
     const [showSettings, setShowSettings] = useState<boolean>(false);
+    const [selectedModel, setSelectedModel] = useState<string | null>(model)
+
 
     return (
         <React.Fragment>
@@ -26,7 +28,7 @@ export default function Header({ model, availableModels }: HeaderProps) {
                                 Alpaca Chat
                             </h1>
                             <p className="text-sm text-gray-500 dark:text-gray-400">
-                                Model: {model}
+                                Model: {selectedModel}
                             </p>
                         </div>
                     </div>
@@ -56,8 +58,8 @@ export default function Header({ model, availableModels }: HeaderProps) {
                                 Modello:
                             </label>
                             <select
-                                value={0}
-                                onChange={() => null}
+                                value={selectedModel!}
+                                onChange={(e: any) => setSelectedModel(e.target.value)}
                                 className="px-3 py-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md text-sm text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             >
                                 {availableModels.map((model: OllamaModel) => (

@@ -101,7 +101,7 @@ export default function MessageContainer({ messages, loading, selectedModel }: M
                             <div className="flex items-center space-x-2">
                                 <Loader2 className="w-4 h-4 animate-spin text-gray-400" />
                                 <span className="text-sm text-gray-500 dark:text-gray-400">
-                                    {selectedModel} is thinking...
+                                    Ollama is thinking...
                                 </span>
                             </div>
                         </div>
